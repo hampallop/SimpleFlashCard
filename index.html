@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Simple FlashCard</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="app/js/app.js"></script>
+	<script type="text/javascript" src="app/js/controller/_Controllers.js"></script>
+	<script type="text/javascript" src="app/js/controller/FlashCardController.js"></script>
+
+	
+</head>
+<body>
+<div class="container" ng-app="SimpleFlashCardApp">
+	<div class="row">
+		<div class="col-md-12" ng-controller="FlashCardController as FlashCardController">
+			
+			<h1>Simple Flash Card</h1>
+			
+			<div class="well">You have {{FlashCardController.data.length}} questions.</div>
+			
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+				<div class="panel panel-default" ng-repeat="(key, object) in FlashCardController.data">
+					<div class="panel-heading" role="tab" id="heading-{{key}}">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{key}}" aria-expanded="false" aria-controls="collapse-{{key}}">
+								{{object.question}}
+							</a>
+						</h4>
+					</div>
+					<div id="collapse-{{key}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{key}}">
+						<div class="panel-body">
+					    	{{object.answer}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
